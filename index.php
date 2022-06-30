@@ -1,4 +1,7 @@
 <?php
+function base_url(){
+  return "http://localhost/alexandra/projeto_final/index.php";
+}
 
 //verifica se foi enviado a variável c que contém
 //o nome do controlador que eu quero executar
