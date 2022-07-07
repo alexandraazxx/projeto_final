@@ -11,6 +11,7 @@ class Conexao{
   public static function getConnection(){
     if(!self::$con){
         self::$con = new mysqli(self::$host, self::$user, self::$pass, self::$database, self::$port);
+        self::$con->set_charset("utf8mb4");
     if(self::$con->connect_error){
         echo "Ocorreu um erro:" . self::$con->connect_error;
         die();
