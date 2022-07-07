@@ -1,10 +1,25 @@
 <?php
+
+$controlador_padrao='home';
+$controlador=ucfirst($_GET['c']??$controlador_padrao);
+$metodo=$_GET['m']??'index';
+$caminho_controlador="controller/$controlador.php";
+
+if(file_exists($caminho_controlador)){
+require $caminho_controlador;
+$objController= new $controlador();
+$id = $_GET['id]'] ?? null;
+if(is_callable(array($objController,$metodo))){
+  call_user_func_array(array($objController,$metodo),array($id));
+}
+}
 function base_url(){
-  return "http://localhost/alexandra/projeto_final/index.php";
+global $base_url;
+return $base_url;
 }
 
-//verifica se foi enviado a variável c que contém
-//o nome do controlador que eu quero executar
+
+/*
 if(isset($_GET["c"])){
   $controller = ucfirst($_GET["c"]);
   $caminho_controller = "controller/$controller.php";
@@ -22,3 +37,4 @@ if(isset($_GET["c"])){
     }
   }
 }
+*/

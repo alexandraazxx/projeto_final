@@ -9,7 +9,7 @@ class ProdutoModel{
 
 
     function inserir($nome, $descricao, $preco, $marca, $foto, $idcategoria){
-        $sql = "INSERT INTO cproduto (nome) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO produto (nome, descricao, preco, marca, foto, categoria_idcategoria) VALUES (?, ?, ?, ?, ?, ?)";
         $comando = $this->conexao->prepare($sql);
         $comando->bind_param("ssdssi", $nome, $descricao, $preco, $marca, $foto, $idcategoria);
         $comando->execute();
@@ -24,7 +24,7 @@ class ProdutoModel{
     }
  
     function atualizar($id, $nome, $descricao, $preco, $marca, $foto, $idcategoria){
-        $sql = "UPDATE produto SET nome = ?, descricao= ?, preco= ?, marca= ?, foto= ?, idcategoria= ? WHERE idcategoria = ?";
+        $sql = "UPDATE produto SET nome = ?, descricao= ?, preco= ?, marca= ?, foto= ?, categoria_idcategoria= ? WHERE idproduto = ?";
         $comando = $this->conexao->prepare($sql);
         $comando->bind_param("ssdssii", $nome, $descricao, $preco, $marca, $foto, $idcategoria, $id);
         $comando->execute();

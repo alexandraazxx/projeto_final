@@ -8,18 +8,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+      <?php foreach($categorias as $categoria): ?>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?= base_url() . "?c=categoria" ?>">Categoria</a>
+          <a class="nav-link active" aria-current="page"
+          href="<?= base_url() . "?c=home&m=ver&id=" . $categoria['idcategoria']?>">
+          <?= $categoria['nome'] ?>
+        </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?= base_url() . "?c=produto" ?>">Produtos</a>
-</li>
-<li class="nav-item">
-          <a class="nav-link" href="<?= base_url() . "?c=usuario" ?>">Usuário</a>
-</li>
-<li class="nav-item">
-          <a class="nav-link" href="<?= base_url() . "?c=usuario&m=logout" ?>">Sair</a>
-</li>
+        <?php endforeach;?>
+
+
+
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

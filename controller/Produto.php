@@ -27,35 +27,43 @@ class Produto{
         }
 
         function editar($id){
-            $categoria = $this->modelo->buscarPorId($id);
+            $produto = $this->modelo->buscarPorId($id);
+            $categorias = $this->categoria_model->buscarTudo();
             include "view/template/cabecalho.php";
             include "view/template/menu.php";
-            include "view/categoria/form.php";
+            include "view/produto/form.php";
             include "view/template/rodape.php";
         }
         
         function excluir($id){
           $this->modelo->excluir($id);
-          header('Location: ?c=categoria');
+          header('Location: ?c=produto');
         } 
+
+        function salvar_foto(){
+            if(isset($_FILES['foto']) && !$_FILES['foto']['error']){
+                    echo $nome_imagem = time() . $_FILES['foto']['name'];
+                    echo $origem= $_FILES['foto']['tmp_name'];
+                    echo $destino = "fotos/$nome_imagem";
+                    if(move_uploaded_file($origem, $destino)){
+                        return $destino;
+                   }
+            }
+            return false;
+        }
 
         function salvar(){
             if(isset($_POST['nome']) && !empty($_POST['nome'])){
-                    if(empty($_POST['idproduto']))
-                        $this->modelo->inserir($_POST['nome'], $_POST['descricao'], $_POST['preco'], $_POST['marca'], "fujduhfd.png", $_POST['categoria']);
-                    }else{
-                        $this->modelo->atualizar(
+                $nome_foto = $this->salvar_foto() ?? "foto/semfoto.jpg";
 
-                            $_POST['idproduto'], $_POST['nome'], $_POST['descricao'], $_POST['preco'], $_POST['marca'], "fujduhfd.png", $_POST['categoria']
-                        );
-                            
-                            
-                            $_POST['idcategoria'], $_POST['categoria']);
+                    if(empty($_POST['idproduto'])){
+                        $this->modelo->inserir($_POST['nome'], $_POST['descricao'], $_POST['preco'], $_POST['marca'], $nome_foto, $_POST['categoria']);
+                    }else{
+                        $this->modelo->atualizar($_POST['idproduto'], $_POST['nome'], $_POST['descricao'], $_POST['preco'], $_POST['marca'], $nome_foto, $_POST['categoria']);
                     }
                 header('Location: ?c=produto');
-            } else{
+            }else{
                 echo "Ocorreu um erro, pois os dados não foram enviados";
             }
-        }
-}
-
+        } 
+    }    
