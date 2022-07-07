@@ -3,6 +3,10 @@ require "model/CategoriaModel.php";
 
 class Categoria{
     function __construct()  {
+        session_start();
+        if(!isset($_SESSION['usuario'])){
+            header('Location: ?c=restrito&m=login');
+        }
         $this->modelo = new CategoriaModel();
     }
 

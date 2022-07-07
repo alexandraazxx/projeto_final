@@ -6,6 +6,10 @@ require 'model/CategoriaModel.php';
 class Produto{
 
     function __construct()  {
+        session_start();
+        if(!isset($_SESSION['usuario'])){
+            header('Location: ?c=restrito&m=login');
+        }
         $this->modelo = new ProdutoModel();
         $this->categoria_model = new CategoriaModel();
     }

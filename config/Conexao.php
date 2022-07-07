@@ -1,10 +1,10 @@
 <?php
 
 class Conexao{
-  static $host = '127.0.0.1';
-  static $user = 'root';
-  static $pass = 'info';
-  static $database = 'db_catalogo_3e';
+  static $host = 'sql107.epizy.com';
+  static $user = 'epiz_32123333';
+  static $pass = 'IzQhTyVfY7KhwV';
+  static $database = 'epiz_32123333_projetofinal';
   static $port = '3306'; 
   static $con;
        

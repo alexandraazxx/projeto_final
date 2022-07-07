@@ -25,7 +25,9 @@ integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd
 <header>
     <header class="bg-black text-white">
     <div class="container pt-3 pb-3">
-        <h1>Catálogo do IF</h1>
+        <a href="<?= base_url() . '?c=home' ?>" class="text-white text-decoration-none">
+            <h1>Catálogo do IF</h1>
+        </a>
         <p>Aqui você encontra de tudo!</p>
     </div>
 </header>
